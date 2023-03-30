@@ -48,7 +48,7 @@ async function asynkFunction(currentValue, numberOfPage) {
         Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
         return
     }
-     if (response.data.totalHits < (numberOfPage * 100)) {
+     if (response.data.totalHits < (numberOfPage * 40)) {
          Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
          console.log('svsd')
          refs.searchMoreBtn.style.display = 'none'

@@ -35,13 +35,14 @@ async function searchButtonClick(e) {
         return
     }
     asynkFunction(currentValue, numberOfPage)
+   
     
   
    
 }
 
 async function asynkFunction(currentValue, numberOfPage) {
-    refs.searchMoreBtn.style.display = 'block';
+    
     try {
          await increment()
    
@@ -50,17 +51,20 @@ async function asynkFunction(currentValue, numberOfPage) {
         Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
         return
     }
-     if (response.data.totalHits < (numberOfPage * 40)) {
+    
+        
+    
+        const images = await response.data.hits;
+        refs.searchMoreBtn.style.display = 'block';
+        
+         if (response.data.totalHits < (numberOfPage * 40)) {
          Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
          console.log('svsd')
          refs.searchMoreBtn.style.display = 'none'
          
      }
-        
     
-    const images = await response.data.hits;
-    
-    creareMarcup(images)
+      creareMarcup(images)
         
     } catch (error) {
        handlerErorr()

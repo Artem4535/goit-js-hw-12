@@ -29,7 +29,7 @@ export default function (country) {
     </p>
   </div>
 </div>`
-    })
+    }).join('')
 }
 
  

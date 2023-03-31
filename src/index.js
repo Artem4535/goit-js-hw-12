@@ -31,7 +31,9 @@ async function searchButtonClick(e) {
     
     
     currentValue = e.currentTarget.searchQuery.value.trim();
-        // resetNumberOfPage()
+    if (currentValue === '') {
+        return
+    }
     asynkFunction(currentValue, numberOfPage)
     
   
@@ -39,7 +41,7 @@ async function searchButtonClick(e) {
 }
 
 async function asynkFunction(currentValue, numberOfPage) {
-    
+    refs.searchMoreBtn.style.display = 'block';
     try {
          await increment()
    
@@ -52,9 +54,9 @@ async function asynkFunction(currentValue, numberOfPage) {
          Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
          console.log('svsd')
          refs.searchMoreBtn.style.display = 'none'
-         return
+         
      }
-        refs.searchMoreBtn.style.display = 'block';
+        
     
     const images = await response.data.hits;
     
